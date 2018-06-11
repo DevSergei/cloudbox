@@ -1,0 +1,51 @@
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ListView?>
+
+<VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112-ea"
+      fx:controller="Controller">
+    <ProgressBar fx:id="operationProgress" managed="false" visible="false" maxWidth="Infinity"/>
+    <HBox fx:id="authPanel">
+        <TextField fx:id="loginField" promptText="Логин" HBox.hgrow="ALWAYS"/>
+        <PasswordField fx:id="passField" promptText="Пароль" HBox.hgrow="ALWAYS"/>
+        <Button text="Авторизоваться" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Локальное хранилище" textAlignment="CENTER"
+                   maxWidth="Infinity">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <ListView fx:id="localList" VBox.vgrow="ALWAYS"/>
+            <HBox fx:id="actionPanel1" managed="false" visible="false">
+                <Button text="Отправить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Удалить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Обновить" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+        <VBox HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Облачное хранилище" textAlignment="CENTER"
+                   maxWidth="Infinity">
+                <font>
+                    <Font name="System Bold" size="14.0"/>
+                </font>
+            </Label>
+            <ListView fx:id="cloudList" VBox.vgrow="ALWAYS"/>
+            <HBox fx:id="actionPanel2" managed="false" visible="false">
+                <Button text="Скачать файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Удалить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Обновить" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
