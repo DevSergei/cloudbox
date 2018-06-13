@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.ListView?>
 
+<?import javafx.scene.control.TableView?>
 <VBox alignment="center" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112-ea"
       fx:controller="Controller">
     <ProgressBar fx:id="operationProgress" managed="false" visible="false" maxWidth="Infinity"/>
@@ -26,7 +27,7 @@
                     <Font name="System Bold" size="14.0"/>
                 </font>
             </Label>
-            <ListView fx:id="localList" VBox.vgrow="ALWAYS"/>
+            <TableView fx:id="localList" VBox.vgrow="ALWAYS"/>
             <HBox fx:id="actionPanel1" managed="false" visible="false">
                 <Button text="Отправить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
                 <Button text="Удалить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
