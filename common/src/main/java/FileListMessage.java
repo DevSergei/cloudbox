@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FileListMessage {
+public class FileListMessage extends AbstractMessage {
     private List<File> files;
 
     public List<File> getFiles() {

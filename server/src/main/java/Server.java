@@ -18,7 +18,7 @@ import java.util.Properties;
 
 
 public class Server {
-    private static final Logger logger = LogManager.getLogger(Server.class.getName());
+    private static final Logger logger = LogManager.getLogger(Server.class);
 //    private static final int PORT = 8189;
 //    private static final int MAX_OBJ_SIZE = 1024 * 1024 * 100; // 10 mb
 
@@ -57,6 +57,8 @@ public class Server {
                     .option(ChannelOption.TCP_NODELAY, true)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
             logger.info("Server started at port: " + propPort);
+            logger.trace("aaaaaaaaaaaaaa");
+            logger.error("fdffd");
             System.out.println("Server started");
             ChannelFuture future = b.bind(propPort).sync();
             future.channel().closeFuture().sync();

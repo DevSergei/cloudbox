@@ -47,7 +47,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                         e.printStackTrace();
                     }
                 }
-
             }
             if (msg instanceof FileMessage) {
                 FileMessage fm = (FileMessage) msg;

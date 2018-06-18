@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class FileMessage {
+public class FileMessage extends AbstractMessage{
     private String filename;
     private byte[] data;
     private int partsCount;

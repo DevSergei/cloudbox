@@ -32,7 +32,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class Controller implements Initializable {
-
     @FXML
     HBox authPanel, actionPanel1, actionPanel2;
     @FXML
@@ -188,6 +187,7 @@ public class Controller implements Initializable {
     }
 
     public void btnSendFile(ActionEvent actionEvent){
+        System.out.println("trying to send a file");
         Path path = Paths.get(localList.getSelectionModel().getSelectedItem().getAbsolutePath());
         ObjectEncoderOutputStream out = Network.getOurInstance().getOut();
         FilePartitionWorker.sendFileFromClient(path,out,operationProgress);
@@ -215,7 +215,7 @@ public class Controller implements Initializable {
         sendMsg(cm);
     }
 
-    public void btnLoaclDeleteFile(ActionEvent actionEvent){
+    public void btnLocalDeleteFile(ActionEvent actionEvent){
         try{
             Files.delete(Paths.get(localList.getSelectionModel().getSelectedItem().getAbsolutePath()));
             refreshLocalList();
@@ -237,19 +237,19 @@ public class Controller implements Initializable {
         CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_SERVER_DELETE_FILE,cloudList.getSelectionModel().getSelectedItem().getAbsoluteFile());
         sendMsg(cm);
     }
-    public void sendFile(DragEvent dragEvent) {
-    }
-
-    public void draggingOver(DragEvent dragEvent) {
-    }
-
-    public void downloadFile(ActionEvent actionEvent) {
-    }
-
-    public void deleteFile(ActionEvent actionEvent) {
-    }
-
-    public void updateFiles(ActionEvent actionEvent) {
-    }
+//    public void sendFile(DragEvent dragEvent) {
+//    }
+//
+//    public void draggingOver(DragEvent dragEvent) {
+//    }
+//
+//    public void downloadFile(ActionEvent actionEvent) {
+//    }
+//
+//    public void deleteFile(ActionEvent actionEvent) {
+//    }
+//
+//    public void updateFiles(ActionEvent actionEvent) {
+//    }
 
 }

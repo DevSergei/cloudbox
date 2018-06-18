@@ -21,6 +21,7 @@ public class AuthGatewayHandler extends ChannelInboundHandlerAdapter {
             if (msg instanceof AuthMessage) {
                 AuthMessage am = (AuthMessage) msg;
                 if (am.getLogin().equals("login") && am.getPassword().equals("password")) {
+                    System.out.println("client has authorized");
                     authorized = true;
                     CommandMessage amAuthOk = new CommandMessage(CommandMessage.CMD_MSG_AUTH_OK);
                     ChannelFuture future = ctx.writeAndFlush(amAuthOk);

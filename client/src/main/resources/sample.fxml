@@ -16,8 +16,8 @@
     <ProgressBar fx:id="operationProgress" managed="false" visible="false" maxWidth="Infinity"/>
     <HBox fx:id="authPanel">
         <TextField fx:id="loginField" promptText="Логин" HBox.hgrow="ALWAYS"/>
-        <PasswordField fx:id="passField" promptText="Пароль" HBox.hgrow="ALWAYS"/>
-        <Button text="Авторизоваться" HBox.hgrow="ALWAYS"/>
+        <PasswordField fx:id="passField" promptText="Пароль" onAction="#tryToAuthorize" HBox.hgrow="ALWAYS"/>
+        <Button text="Авторизоваться" onAction="#tryToAuthorize" HBox.hgrow="ALWAYS"/>
     </HBox>
     <HBox VBox.vgrow="ALWAYS">
         <VBox HBox.hgrow="ALWAYS">
@@ -29,9 +29,9 @@
             </Label>
             <TableView fx:id="localList" VBox.vgrow="ALWAYS"/>
             <HBox fx:id="actionPanel1" managed="false" visible="false">
-                <Button text="Отправить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
-                <Button text="Удалить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
-                <Button text="Обновить" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Отправить файл" maxWidth="Infinity" onAction="#btnSendFile" HBox.hgrow="ALWAYS"/>
+                <Button text="Удалить файл" maxWidth="Infinity" onAction="#btnLocalDeleteFile" HBox.hgrow="ALWAYS"/>
+                <Button text="Обновить" maxWidth="Infinity" onAction="#btnLocalRefresh" HBox.hgrow="ALWAYS"/>
             </HBox>
         </VBox>
         <VBox HBox.hgrow="ALWAYS">
@@ -43,9 +43,9 @@
             </Label>
             <ListView fx:id="cloudList" VBox.vgrow="ALWAYS"/>
             <HBox fx:id="actionPanel2" managed="false" visible="false">
-                <Button text="Скачать файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
-                <Button text="Удалить файл" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
-                <Button text="Обновить" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                <Button text="Скачать файл" maxWidth="Infinity" onAction="#requestFileDownload" HBox.hgrow="ALWAYS"/>
+                <Button text="Удалить файл" maxWidth="Infinity" onAction="#requestCloudDeleteFile" HBox.hgrow="ALWAYS"/>
+                <Button text="Обновить" maxWidth="Infinity" onAction="#btnCloudRefresh" HBox.hgrow="ALWAYS"/>
             </HBox>
         </VBox>
     </HBox>
