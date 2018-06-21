@@ -194,6 +194,7 @@ public class Controller implements Initializable {
     }
 
     public void tryToAuthorize(ActionEvent actionEvent){
+        System.out.println("trying to auth");
         if(!Network.getOurInstance().isConnected()){
             connect();
         }
@@ -202,6 +203,7 @@ public class Controller implements Initializable {
     }
 
     private void sendMsg(AbstractMessage am) {
+        System.out.println("trying to send msg");
         try {
             Network.getOurInstance().sendData(am);
         } catch (IOException e) {
@@ -210,12 +212,14 @@ public class Controller implements Initializable {
     }
 
     public void requestFileDownload(ActionEvent actionEvent){
+        System.out.println("trying to download");
         File file = cloudList.getSelectionModel().getSelectedItem();
         CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQUEST_FILE_DOWNLOAD,file);
         sendMsg(cm);
     }
 
     public void btnLocalDeleteFile(ActionEvent actionEvent){
+        System.out.println("trying to delete");
         try{
             Files.delete(Paths.get(localList.getSelectionModel().getSelectedItem().getAbsolutePath()));
             refreshLocalList();
@@ -225,15 +229,19 @@ public class Controller implements Initializable {
     }
 
     public void btnLocalRefresh(ActionEvent actionEvent){
+        System.out.println("trying to refresh");
         refreshLocalList();
     }
 
     public void btnCloudRefresh(ActionEvent actionEvent){
+        System.out.println("trying to cloud refresh");
         CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_FILES_LIST);
         sendMsg(cm);
     }
 
     public void requestCloudDeleteFile(ActionEvent actionEvent){
+        System.out.println("trying to cloud delete");
+        String path = cloudList.getSelectionModel().getSelectedItem().getAbsoluteFile().getPath();
         CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_SERVER_DELETE_FILE,cloudList.getSelectionModel().getSelectedItem().getAbsoluteFile());
         sendMsg(cm);
     }

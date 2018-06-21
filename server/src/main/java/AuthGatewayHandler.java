@@ -28,7 +28,7 @@ public class AuthGatewayHandler extends ChannelInboundHandlerAdapter {
                     future.await();
                     String username = "client";
                     ServerUtilities.sendFileList(ctx.channel(), username);
-                    ctx.pipeline().addLast(new ServerHandler(username));
+                   // ctx.pipeline().addLast(new ServerHandler(username));
                 } else {
                     ReferenceCountUtil.release(msg);
                 }

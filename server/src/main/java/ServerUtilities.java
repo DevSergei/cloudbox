@@ -15,6 +15,7 @@ public class ServerUtilities {
     }
 
     private static String getUserRootPath(String username) {
+        System.out.println("username is " + username);
         return "server/repository/" + username;
     }
 }

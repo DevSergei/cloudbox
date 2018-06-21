@@ -9,9 +9,9 @@ public class CommandMessage extends AbstractMessage {
     private int type;
     private Object[] attachment;
 
-    public CommandMessage(int type) {
-        this.type = type;
-    }
+//    public CommandMessage(int type) {
+//        this.type = type;
+//    }
 
 //    public CommandMessage(int type, File file) {
 //        this.type = type;

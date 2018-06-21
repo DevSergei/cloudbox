@@ -17,15 +17,15 @@ import java.io.Reader;
 import java.util.Properties;
 
 
-public class Server {
-    private static final Logger logger = LogManager.getLogger(Server.class);
+public class Server2 {
+    private static final Logger logger = LogManager.getLogger(Server2.class);
 //    private static final int PORT = 8189;
 //    private static final int MAX_OBJ_SIZE = 1024 * 1024 * 100; // 10 mb
 
     private int propPort = 8189;
     private int maxObjSize = 1024 * 1024 * 100;
 
-    public Server() {
+    public Server2() {
     }
 
     public void run() throws Exception {
@@ -46,10 +46,9 @@ public class Server {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(
-                                    new ObjectDecoder(maxObjSize, ClassResolvers.cacheDisabled(null)),
-                                    new ObjectEncoder(),
-                                    new AuthGatewayHandler()/*,new ServerHandler("client")*/
+                            socketChannel.pipeline().addLast(new ObjectDecoder(maxObjSize, ClassResolvers.cacheDisabled(null)),
+                                                            new ObjectEncoder(),
+                                                            new ServerHandler("client")
                             );
                         }
                     })
@@ -66,6 +65,6 @@ public class Server {
     }
 
     public static void main(String[] args) throws Exception {
-        new Server().run();
+        new Server2().run();
     }
 }
