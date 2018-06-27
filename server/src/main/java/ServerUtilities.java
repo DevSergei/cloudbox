@@ -1,6 +1,8 @@
 import io.netty.channel.Channel;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ServerUtilities {
@@ -16,6 +18,14 @@ public class ServerUtilities {
 
     private static String getUserRootPath(String username) {
         System.out.println("username is " + username);
-        return "server/repository/" + username;
+        Path path = Paths.get("server/repository/" + username);
+        if(!Files.exists(path)) {
+            try {
+                Files.createDirectory(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return path.toString();
     }
 }

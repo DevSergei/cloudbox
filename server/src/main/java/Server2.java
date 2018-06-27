@@ -29,6 +29,7 @@ public class Server2 {
     }
 
     public void run() throws Exception {
+        DBHelper.connect();
         EventLoopGroup mainGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

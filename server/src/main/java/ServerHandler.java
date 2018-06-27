@@ -35,13 +35,18 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             if (!authorized) {
                 if (msg instanceof AuthMessage) {
                     AuthMessage am = (AuthMessage) msg;
-                    if (am.getLogin().equals("login") && am.getPassword().equals("password")) {
+                    String login = am.getLogin();
+                    String pass = am.getPassword();
+                    String nick = DBHelper.getNickByCredentials(login,pass);
+//                    if (am.getLogin().equals("login") && am.getPassword().equals("password")) {
+                    if (nick!=null) {
                         System.out.println("client has authorized");
                         authorized = true;
                         CommandMessage amAuthOk = new CommandMessage(CommandMessage.CMD_MSG_AUTH_OK);
                         ChannelFuture future = ctx.writeAndFlush(amAuthOk);
                         future.await();
-                        String username = "client";
+                        String username = nick;//"client"; // TODO prepere repo for different clients
+                        this.clientName = nick;
                         ServerUtilities.sendFileList(ctx.channel(), username);
                         // ctx.pipeline().addLast(new ServerHandler(username));
                     } else {
@@ -75,7 +80,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             if (msg instanceof FileMessage) {
                 FileMessage fm = (FileMessage) msg;
                 try {
-                    Path path = Paths.get("server/repository/client/" + fm.getFilename());
+                    Path path = Paths.get("server/repository/" + clientName + "/" + fm.getFilename());
                     if (!Files.exists(path)) {
                         Files.createFile(path);
                     }
