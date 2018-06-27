@@ -191,6 +191,7 @@ public class Controller implements Initializable {
         Path path = Paths.get(localList.getSelectionModel().getSelectedItem().getAbsolutePath());
         ObjectEncoderOutputStream out = Network.getOurInstance().getOut();
         FilePartitionWorker.sendFileFromClient(path,out,operationProgress);
+        this.refreshCloudList();
     }
 
     public void tryToAuthorize(ActionEvent actionEvent){
@@ -234,15 +235,20 @@ public class Controller implements Initializable {
     }
 
     public void btnCloudRefresh(ActionEvent actionEvent){
-        System.out.println("trying to cloud refresh");
-        CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_FILES_LIST);
-        sendMsg(cm);
+        this.refreshCloudList();
     }
 
     public void requestCloudDeleteFile(ActionEvent actionEvent){
         System.out.println("trying to cloud delete");
         String path = cloudList.getSelectionModel().getSelectedItem().getAbsoluteFile().getPath();
         CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_SERVER_DELETE_FILE,cloudList.getSelectionModel().getSelectedItem().getAbsoluteFile());
+        sendMsg(cm);
+        this.refreshCloudList();
+    }
+
+    void refreshCloudList(){
+        System.out.println("trying to cloud refresh");
+        CommandMessage cm = new CommandMessage(CommandMessage.CMD_MSG_REQEST_FILES_LIST);
         sendMsg(cm);
     }
 //    public void sendFile(DragEvent dragEvent) {

@@ -16,7 +16,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Properties;
 
-
+/*
+This class doesn't work. Due to new AuthGatewayHandler() in the pipeline instead of ServerHandler. Waiting for Alexandr to help with it.
+* */
 public class Server {
     private static final Logger logger = LogManager.getLogger(Server.class);
 //    private static final int PORT = 8189;
